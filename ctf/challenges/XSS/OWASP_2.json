@@ -1,0 +1,15 @@
+{
+        "country_code": "fr",
+        "color": "#B0D601",
+        "name": "Injection 102: Who uses Javascript anyway?",
+        "description": "A user visits the page every 10 seconds, get their cookie!",
+        "hint": "<script></script>",
+        "docker_file": true,
+        "links": "",
+        "flag": "CTF{th1si5fl4g2__!}",
+        "type": "jeopardy",
+        "category": "web",
+        "points": 150,
+        "hint_penalty": 0,
+        "flag_penalty": 0
+}

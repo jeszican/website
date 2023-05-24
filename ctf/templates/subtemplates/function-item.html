@@ -1,0 +1,25 @@
+<li class="nav-item">
+	<a class="nav-link"
+		role="button" 
+		href="#"
+		data-container="body" data-title="{{ function|replace("_"," ")|title }}" data-toggle="popover" data-placement="right" 
+		data-content="
+			<form>
+				<div class='card-body'>
+					<!-- the action field -->
+					<input type='hidden' name='action' value='{{ function }}'>
+					{% for field in list_of_functions[function]['fields'] %}
+						<div class='form-group'>
+							<p class='form-text text-muted'>{{ field['description'] }}</p>
+							{% include 'inputs/%s.html' % field['type'] ignore missing %}
+						</div>
+					{% endfor %}
+					<div style='text-align: right;'>
+						<button class='btn btn-primary btn-small' type='submit'>Submit</button>
+					</div>
+				</div>
+			</form>
+		">
+		{{ function|replace("_"," ")|title }}
+	</a>
+</li>

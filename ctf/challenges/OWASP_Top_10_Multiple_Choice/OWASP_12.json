@@ -1,0 +1,19 @@
+{
+        "country_code":"ar",
+	"color":"#EC7D32",
+        "name": "OWASP Top 10: 💔",
+        "description": "Which of the following best demonstrates broken access control?",
+        "hint": "Access control is about minimising access to certain features/information to those not mean to use/view it.",
+        "links": "[\"https://www.owasp.org/index.php/Top_10_2017-Top_10\"]", 
+        "flag": "A user is able to access a friend's photos by entering their email address",
+        "a":"A user is not required to log in to view the home page of a blog",
+        "b":"A user is able to access a friend's photos by entering their email address",
+        "c":"An administrator is able to reset other user's passwords",
+        "d":"A user is unable to connect to a server without an SSH key",
+        "type":"multiple",
+        "category":"web theory",
+        "points": 25,
+        "hint_penalty": 5,
+        "flag_penalty": 5
+}
+

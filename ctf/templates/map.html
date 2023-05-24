@@ -1,0 +1,152 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Map | Deloitte CTF</title>
+
+		<!-- jquery js -->
+		<script src="static/js/lib/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+		<!-- socketio -->
+		<script type="text/javascript" src="static/js/lib/socket.io.js"></script>
+		
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="static/css/lib/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<!-- font awesome -->
+		<script src="/static/js/lib/font-awesome.js"></script>
+		<!-- main css -->
+		<link rel="stylesheet" href="static/css/main.css">
+		<link rel="stylesheet" href="static/css/clippy.css">
+		<!-- js map -->
+		<script src="static/js/lib/jquery.vmap.js"></script>
+		<script src="static/js/lib/jquery.vmap.world.js"></script>
+		<script src="static/js/lib/jquery.vmap.us.js"></script>
+		<!-- main -->
+		<script src="static/js/map.js"></script>
+		<script src="static/js/modals.js"></script>
+		<link rel="icon" type="image/vnd.microsoft.icon" href="/static/img/favicon.png">
+		<script>
+			var country_unlock_audio = new Audio('/static/snds/country_unlock.mp3');
+			var country_launched_audio = new Audio('/static/snds/country_launched.mp3');
+			var countries_to_challenges = {{ countries_to_challenges|safe }}
+			var deadline = "{{ game_get_end_date() }}"
+			var team_room = "{{ url_for('sse.stream', channel=current_team['team_name']) }}"
+			var all_room = "{{ url_for('sse.stream', channel='ALL') }}"
+			var user_room = "{{ url_for('sse.stream', channel=current_user.username) }}"
+		</script>
+		<!-- server events -->
+		<script type="text/javascript" src="static/js/events.js"></script>
+	</head>
+<body class="{{ game_get_gameboard_theme() }}">
+<div class="container-fluid content-container">
+			<div onclick="toggleListView()" class="list-view-tab">
+				<span class="open-button">LIST VIEW
+					<span class="out-arrow"> ⬇</span>
+					<span class="in-arrow"> ⬆</span>
+				</span>
+				<div class="challenge-table">
+					<table>
+						{% for country, challenge in countries_to_challenges_non_json.items() %}
+						<tr onclick="openChallengeModal('{{ country }}'); event.stopPropagation();">
+							<td>
+								<table>
+									<tr>
+										<td>
+											{% if challenge.complete == True %}
+											<a class="strikethrough">{{ challenge.name|safe }}</a>
+											{% else %}
+											<a>{{ challenge.name|safe }}</a>
+											{% endif %}
+										</td>
+									</tr>
+									<tr>
+										<td>
+											<span class="{{ challenge.type.replace(",","") }}" id="challenge-type">{{ challenge.type.replace(",", " & ") }}</span>
+											<span class="{{ challenge.category }}" id="challenge-category">{{ challenge.category }}</span>
+											{{ challenge.points }}
+										</td>
+									</tr>
+								</table>
+							</td>
+						</tr>
+						{% endfor %}
+					</table>
+				</div>
+			</div>
+
+			<div class="col-sm-12 map-container">
+				<div class="top menu-bar">
+					<div class="bar-item">
+						<h7 class="heading">Objective: </h7>
+						<span class="white-text">{{ game_get_objective() }}</span>
+					</div>
+					<div class="bar-item">
+						<h7 class="heading">Telegrams:</h7>
+						<marquee class="announcements">
+							<script>announcements = []</script>
+							{% for announcement in game_get_announcements()[-5:] %}
+							<script>announcements.push({{ announcement|safe }})</script>
+							<div><span class="date">{{ announcement["time"] }}</span><span class="content"> {{ announcement["announcement"] }}</span></div>
+							{% endfor %}
+						</marquee>
+					</div>
+				</div>
+
+				<div id="vmap" class="map">
+					<div class="tv-container"></div>
+				</div>
+				<div id="usmap" class="map" >
+					<div class="tv-container"></div>
+					<button onclick="hideUSMap()">Back</button>
+				</div>
+				<div class="bottom menu-bar">
+						<div class="menu">
+							<button onclick="openScoreboard()">SCOREBOARD</button>
+							{% if current_team["team_name"] == "Administrators" %}
+								<button onclick="window.location.href='/admin'">ADMIN</button>
+							{% endif %}
+							<button onclick="openDiscord()">
+								<svg color='#7386CE' width=20 aria-hidden="true" focusable="false" data-prefix="fab" data-icon="discord" class="svg-inline--fa fa-discord fa-w-14" role="img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><path fill="currentColor" d="M297.216 243.2c0 15.616-11.52 28.416-26.112 28.416-14.336 0-26.112-12.8-26.112-28.416s11.52-28.416 26.112-28.416c14.592 0 26.112 12.8 26.112 28.416zm-119.552-28.416c-14.592 0-26.112 12.8-26.112 28.416s11.776 28.416 26.112 28.416c14.592 0 26.112-12.8 26.112-28.416.256-15.616-11.52-28.416-26.112-28.416zM448 52.736V512c-64.494-56.994-43.868-38.128-118.784-107.776l13.568 47.36H52.48C23.552 451.584 0 428.032 0 398.848V52.736C0 23.552 23.552 0 52.48 0h343.04C424.448 0 448 23.552 448 52.736zm-72.96 242.688c0-82.432-36.864-149.248-36.864-149.248-36.864-27.648-71.936-26.88-71.936-26.88l-3.584 4.096c43.52 13.312 63.744 32.512 63.744 32.512-60.811-33.329-132.244-33.335-191.232-7.424-9.472 4.352-15.104 7.424-15.104 7.424s21.248-20.224 67.328-33.536l-2.56-3.072s-35.072-.768-71.936 26.88c0 0-36.864 66.816-36.864 149.248 0 0 21.504 37.12 78.08 38.912 0 0 9.472-11.52 17.152-21.248-32.512-9.728-44.8-30.208-44.8-30.208 3.766 2.636 9.976 6.053 10.496 6.4 43.21 24.198 104.588 32.126 159.744 8.96 8.96-3.328 18.944-8.192 29.44-15.104 0 0-12.8 20.992-46.336 30.464 7.68 9.728 16.896 20.736 16.896 20.736 56.576-1.792 78.336-38.912 78.336-38.912z"></path></svg>
+							</button>
+							<button onclick="getRunning()">RUNNING CHALLENGES</button>
+							<button onclick="window.location.href='/logout'">LOGOUT</button>
+						</div>
+						<div class="team-info"><table><tr><td>{{ current_team["team_name"] }}</td><td id="total-points"> {{ current_team["total_points"] }}</td></tr></table></div>
+						<div class="clock-container">
+							<h7 class="heading">Countdown:</h7>
+							<div id="clockdiv">
+							    <span class="days figure"></span> days
+							    <span class="hours figure"></span> hours
+							    <span class="minutes figure"></span> minutes
+							    <span class="seconds figure"></span> seconds
+							</div>
+						</div>
+				</div>
+			</div>
+
+</div>
+<div id="overlay"></div>
+<div class="modal-container">
+{% include 'modal.html' %}
+{% include 'discord.html' %}
+{% include 'score_modal.html' %}
+{% include 'instances_modal.html' %}
+</div>
+{% include 'dialog.html' %}
+<div id="challenge-preview" class="hidden">
+	<table>
+		<tr><td colspan=2 class="challenge-name"></td></tr>
+		<tr><td>
+			<span id="challenge-type"></span>
+			<span id="challenge-category"></span>
+		</td><td><span id="challenge-points"></span></td></tr>
+	</table>
+</div>
+</html>
+<!-- Clippy.js -->
+<script src="/static/js/clippy.min.js"></script>
+<script>
+clippy.load('Bonzi', function(agent){
+	window.agent = agent;
+});
+</script>

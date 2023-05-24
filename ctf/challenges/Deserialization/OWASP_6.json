@@ -1,0 +1,15 @@
+{
+        "country_code": "se",
+        "color": "#B0D601",
+        "name": "Ew, Pickles",
+        "description": "This flag is stored in a file, flag.txt",
+        "hint": "You need to use a reverse shell (:",
+        "docker_file": true,
+        "links": "",
+        "flag": "CTF{th1si5fl4g6__!}",
+        "type": "jeopardy",
+        "category": "web",
+        "points": 300,
+        "hint_penalty": 0,
+        "flag_penalty": 0
+}

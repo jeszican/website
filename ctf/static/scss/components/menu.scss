@@ -1,0 +1,44 @@
+.menu {
+	display: flex;
+	justify-content: space-between;
+	padding-top: 0.5em;
+	font-size: 15px;
+
+	.team-info {
+		padding: 0.5em;
+	}
+
+	a {
+		letter-spacing: 1px;
+	}
+
+	button {
+		width: auto;
+		margin-right: 1vw;
+	}
+
+	table {
+		width: 100%;
+	}
+}
+
+// the menu bar
+.menu-bar {
+	width: 100%;
+	padding-left: 5vw;
+	padding-right: 5vw;
+	display: flex;
+	justify-content: space-between;
+	
+	.bar-item {
+		width: 100%;
+		white-space: nowrap;
+		display: flex;
+		align-items: baseline;
+
+		&:first-child {
+			margin-right: 2vw;
+			max-width: 400px;
+		}
+	}
+}

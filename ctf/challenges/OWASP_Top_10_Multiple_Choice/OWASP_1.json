@@ -1,0 +1,19 @@
+{
+        "country_code":"co",
+	"color":"#EC7D32",
+        "name": "OWASP Top 10: 💉",
+        "description": "What is the attack technique that allows attackers to control the database by sending malicious queries?",
+        "hint": "SELECT * FROM ur a n00b;",
+        "links": "[\"https://www.owasp.org/index.php/Top_10_2017-Top_10\"]", 
+        "flag": "SQL Injection",
+        "a":"Cross Site Request Forgery",
+        "b":"SQL Injection",
+        "c":"XML Injection",
+        "d":"Unvalidated Redirects & Forwards",
+        "type":"multiple",
+        "category":"web theory",
+        "points": 25,
+        "hint_penalty": 5,
+        "flag_penalty": 5
+}
+

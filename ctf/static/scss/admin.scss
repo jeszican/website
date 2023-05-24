@@ -1,0 +1,168 @@
+$dark-color: #272031;
+$dark-higher: rgb(126,124,132,0.2);
+$light-color: #F5F6F6;
+$light-accent: #929097;
+$accent-color: #A34555;
+$danger: rgba(255,99,71,0.3);
+$green: yellowgreen;
+$red: tomato;
+
+@mixin border-radius {
+	border-radius: 5px;
+}
+
+body {
+	&.admin {
+
+		background-color: $dark-color;
+		height: 100vh;
+
+		.copy-this { font-family: monospace; font-size: 15px; }
+
+		a[data-toggle=tooltip], .copy {
+			cursor: pointer;
+		}
+	
+		.card { 
+			border: none;
+			background-color: transparent;
+	
+			.card-header {
+				background-color: $light-color;
+				padding: 0.5em;		
+				padding-left: 0.75em;
+				font-variant: all-small-caps;
+
+				.badge {
+					margin-right: .5rem!important;
+					max-height: 24px;
+				}
+	
+				h6 { display: inline; }
+	
+				h5 {
+					display: flex;
+					flex-direction: row;
+					justify-content: space-between;
+					align-items: center;
+				}
+
+				&.playing {
+					background-color: yellowgreen;
+					color: black;
+					border-radius: 0.25em;
+				}
+	
+				&.stopped {
+					background-color: tomato;
+					color: white;
+					border-radius: 0.25em;
+				}
+			}
+		}
+
+		.popover {
+			border-bottom-right-radius: 2.25em;
+	
+			.popover-header {
+				background-color: $light-accent;
+				height: 50px;
+				line-height: 35px;
+				color: white;
+				font-variant: all-small-caps;
+			}
+		}
+	
+		.dashboard {
+			padding: 1em;
+		}
+		
+		.accordion {
+			.card {
+				border-radius: 5px;
+				border: none;
+				max-height: 95vh;
+				display: flex;
+
+				.card-header {
+					background-color: $light-accent;
+					padding: 0.25em;
+
+					.btn-link {
+						font-variant: all-small-caps;
+						color: $light-color;
+					}
+				}
+
+				.collapse.show {
+					overflow: scroll;
+					height: 100%;
+				}
+
+				.card-body {
+					background: $light-color;
+
+					table {
+						width: 100%;
+
+						td {
+							word-break: break-all;
+						}
+
+						&.sounds {
+							table-layout: fixed;
+
+							tr {
+								cursor: pointer;
+							}
+						}
+					}
+				}
+			}
+		}
+
+		.nav {
+			background: $dark-higher;
+			align-items: center;
+			justify-content: flex-end;
+			height: 100vh;
+			padding-left: 10px;
+			padding-right: 10px;
+
+			.nav-item {
+				width: 100%;
+			}
+
+			.nav-link {
+				font-variant: all-small-caps;
+				color: $light-color;
+				text-align: right; 
+
+				&:hover {
+					background-color: #929097;
+					border-radius: 5px;
+				}
+			}
+
+			ul {
+				@include border-radius;
+				list-style: none; 
+				padding: 0;
+				text-align: right;
+				background: $danger;
+
+				.nav-link {
+					text-align: right; 
+
+					&:hover {
+						background-color: tomato;
+					}
+				}
+			}
+		}
+	}
+
+	.card-body {
+		padding: 1em;
+	}
+}

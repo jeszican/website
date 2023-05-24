@@ -1,0 +1,19 @@
+{
+        "country_code":"ec",
+	"color":"#EC7D32",
+        "name": "OWASP Top 10: 💉",
+        "description": "Which of these is NOT another injection technique?",
+        "hint": "One of these is a browser developer function.",
+        "links": "[\"https://www.owasp.org/index.php/Top_10_2017-Top_10\"]", 
+        "flag": "Console Injection",
+        "a":"Template Injection",
+        "b":"LDAP Injection",
+        "c":"Console Injection",
+        "d":"XPath Injection",
+        "type":"multiple",
+        "category":"web theory",
+        "depends_on":"co",
+        "points": 25,
+        "hint_penalty": 5,
+        "flag_penalty": 5
+}

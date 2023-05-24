@@ -1,0 +1,160 @@
+@font-face {
+	font-family: "sheeping_catsregular";
+	src: url("/static/fonts/sheepingcats-929z-webfont.woff2") format("woff2"),
+		url("/static/fonts/sheepingcats-929z-webfont.woff") format("woff");
+	font-weight: normal;
+	font-style: normal;
+}
+
+body {
+	&.eventboard {
+		
+
+		.strikethrough {
+			text-decoration: line-through;
+		}
+
+		.triple-flag-streak {
+			font-family: sheeping_catsregular;
+
+			.big-number { min-width: 50px; }
+			&.active {
+				display: flex;
+			}
+			position: absolute;
+			width: 100%;
+			height: 100%;
+			text-align: center;
+			justify-content: center;
+			align-items: center;
+		}
+
+		.big-number {
+			font-size: 80px;
+			font-family: sheeping_catsregular;
+			color: orange;
+			text-shadow: -1px -1px 0 #000, 1px -1px 0 #fff, -1px 1px 0 #fff, 1px 1px 0 #fff;
+		}
+
+		#total-points {
+			color: greenyellow;
+			padding-left: 1vw;
+		}
+
+		body {
+			display: flex;
+			justify-content: center;
+		}
+
+		.container-fluid.content-container {
+			padding: 0;
+			height: 100vh;
+			width: 100vw;
+		}
+
+		.col-sm-12.map-container {
+			padding: 0;
+			height: 100%;
+			display: flex;
+			align-items: center;
+			justify-content: center;
+			background-color: #170320;
+			flex-direction: column;
+			padding-bottom: 10px;
+			padding-top: 10px;
+		}
+
+		.hidden {
+			display: none;
+		}
+
+		.navbar.bg-dark {
+			background-color: #0f0f0f !important;
+		}
+
+		.leaderboard {
+			width: 100%;
+			overflow: scroll;
+			height: 85%;
+		}
+
+		.leaderboard-table {
+			tr td {
+				border-bottom: 1px solid white;
+				overflow: hidden;
+			}
+
+			width: 100%;
+			table-layout: fixed;
+			max-width: 300px;
+			white-space: wrap;
+
+			th {
+				font-size: 16px;
+				font-weight: lighter;
+			}
+
+			td {
+				font-size: 15px;
+				overflow: hidden;
+			}
+		}
+
+		.left-col {
+			padding: 0.5em;
+			padding-right: 0;
+		}
+
+		.eventboard-price {
+			width: 100%;
+		}
+
+		.eventboard-info {
+			border: 2px outset;
+			background-color: lightgrey;
+			padding: 1em;
+			width: 100%;
+		}
+
+		#eventboard-dash {
+			padding: 0;
+			overflow: hidden;
+			height: 100%;
+		}
+
+
+		.col-sm-3 {
+			height: 100%;
+			display: flex;
+			flex-direction: column;
+		}
+
+		#eventlog {
+			padding: 0.5em;
+			overflow-y: hidden;
+			padding-left: 0;
+
+			div {
+				margin-bottom: 1vh;
+				padding: 2%;
+			}
+
+
+			span.points {
+				font-size: 15px;
+				color: yellowgreen;
+			}
+
+			legend {
+				font-size: 15px;
+				width: auto;
+				margin-bottom: 0;
+			}
+
+			table {
+				width: 100%;
+				height: 100%;
+			}
+		}
+	}
+}

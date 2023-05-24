@@ -1,0 +1,18 @@
+{
+        "country_code":"cl",
+	"color":"#EC7D32",
+        "name": "OWASP Top 10: ↪️",
+        "description": "What MIGHT you be vulnerable to if you used the current users username in the destination for a redirect?",
+        "hint": "The clue is in the description..",
+        "links": "[\"https://www.owasp.org/index.php/Top_10_2017-Top_10\"]", 
+        "flag": "Unvalidated Redirects & Forwards",
+        "a":"Unvalidated Redirects & Forwards",
+        "b":"Cross Site Redirection",
+        "c":"Cross Site Request Forgery",
+        "d":"SQL Injection",
+        "type":"multiple",
+        "category":"web theory",
+        "points": 25,
+        "hint_penalty": 5,
+        "flag_penalty": 5
+}

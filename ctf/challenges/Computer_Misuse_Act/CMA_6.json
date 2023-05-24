@@ -1,0 +1,20 @@
+{
+        "country_code":"us-wa",
+	"color":"#5C9BD5",
+        "name": "Computer Misuse Act: 👮",
+        "description": "Which offence of the computer misuse act is most applicable: \n\nI wrote a piece of software to allow me to play the sims 3 for free! I sold it to simsfan101 online for 10 quid and little does he know I can access all his files..",
+        "hint": "He wrote some software to aid him in accessing someones files.",
+        "links": "",
+	"audio":"cma9.mp3",
+        "flag": "Offence 3a",
+        "a":"Offence 1",
+        "b":"Not an offence",
+        "c":"Offence 2",
+        "d":"Offence 3a",
+        "type":"multiple",
+        "category":"legislation",
+        "points": 50,
+        "hint_penalty": 5,
+        "flag_penalty": 15
+}
+

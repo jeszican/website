@@ -1,0 +1,20 @@
+{
+        "country_code":"us-fl",
+	"color":"#5C9BD5",
+        "name": "Computer Misuse Act: 👮",
+        "description": "Which offence of the computer misuse act is most applicable: \n\nMy boyfriend has gone away on work. I borrowed his computer so I could look at last years holiday photos, I didn't ask, but I'm sure he wouldn't mind.",
+        "hint": "'I didn't ask'",
+        "links": "",
+	"audio":"cma2.mp3",
+        "flag": "Offence 1",
+        "a":"Offence 2",
+        "b":"Not an offence",
+        "c":"Offence 3",
+        "d":"Offence 1",
+        "type":"multiple",
+        "category":"legislation",
+        "points": 50,
+        "hint_penalty": 5,
+        "flag_penalty": 15
+}
+

@@ -1,0 +1,70 @@
+
+body {
+	margin: 0;
+	padding: 0;
+	display: flex; justify-content: center; overflow: hidden;
+
+	&.landing {
+
+		// .window-bar { width: 100%; height: 25px; background-color: #7894C9; font-family: courier; font-size: 16px; padding-left: 5px; color: white; } 
+		// .window-bar img { height: 20px; margin-right: 2px; } 
+
+		.container-fluid.content-container {
+			padding: 0; display: flex; align-items: center; justify-content: center;
+			flex-direction: column; padding-bottom:10px;
+			padding-top:10px; height: 100vh; width: 100vw;
+			/* background-image: linear-gradient(rgba(150, 0, 255, 0.1) 2px, transparent 2px), linear-gradient(90deg, rgba(150, 0, 255, 0.1) 2px, transparent 2px), linear-gradient(rgba(150, 0, 255, 0.1) 1px, transparent 1px), linear-gradient(90deg, rgba(150, 0, 255, 0.1) 1px, transparent 1px);
+		  background-size: 75px 75px, 75px 75px, 15px 15px, 15px 15px;
+		  background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px; */
+		
+		}
+
+		p.error { font-size: 13px; color: crimson; display: block; 
+		    padding-top: 0;
+			padding-top: 2rem;
+			margin-bottom: 0;
+			text-align: center;
+		}
+
+		.login-modal {
+			display: flex;
+			flex-direction: column;
+			width: 25vw;
+
+			input[type='text'], input[type='password'] {
+				width: 100%;
+			}
+
+			table {
+			  width: 100%;
+			}
+		  
+			form table tr:last-child {
+			  text-align: center;
+			}
+
+			  
+		  }
+		  
+		  form {
+			margin-top: 1vh;
+		  }
+		  
+		 
+		  .modal-container {
+			  display: flex;
+			  align-items: center;
+			  justify-content: center;
+			z-index: 200;
+			width: 100%;
+			height: 100%;
+		  }
+		  
+		  .login-modal table tr td {
+			padding: 0.5em;
+		  }
+		  
+		  
+
+	}
+}

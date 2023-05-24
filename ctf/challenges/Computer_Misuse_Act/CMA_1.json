@@ -1,0 +1,20 @@
+{
+        "country_code":"us-wy",
+	"color":"#5C9BD5",
+        "name": "Computer Misuse Act: 👮",
+        "description": "Which offence of the computer misuse act is most applicable: \n\nMy boyfriend spends way too much time on FIFA so I used my dads industrial magnet to wipe the hard drive.",
+        "hint": "A computer was not accessed..",
+        "audio": "cma7.mp3", 
+        "links": "",
+        "flag": "Offence 3",
+        "a":"Not an offence",
+        "b":"Offence 3",
+        "c":"Offence 1",
+        "d":"Offence 3a",
+        "type":"multiple",
+        "category":"legislation",
+        "points": 50,
+        "hint_penalty": 5,
+        "flag_penalty": 15
+}
+

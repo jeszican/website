@@ -1,0 +1,15 @@
+{
+        "country_code":"br",
+	"color":"#EC7D32",
+        "name": "OWASP Top 10: 🎉🎉",
+        "description": "What does OWASP stand for?",
+        "hint": "No hint, soz.",
+        "links": "[\"https://www.owasp.org/index.php/Top_10_2017-Top_10\"]", 
+        "flag": "Open Web Application Security Project",
+        "type":"jeopardy",
+        "depends_on":"",
+        "points": 50,
+        "category":"web theory",
+        "hint_penalty": 25,
+        "flag_penalty": 25
+}

@@ -1,0 +1,19 @@
+{
+        "country_code":"pe",
+	"color":"#EC7D32",
+        "name": "OWASP Top 10: 👨‍💻",
+        "description": "Which of these OWASP Top 10 vulnerabilities would include allowing users to have the password 'password'?",
+        "hint": "Which ones haven't you answered questions on yet?",
+        "links": "[\"https://www.owasp.org/index.php/Top_10_2017-Top_10\"]", 
+        "flag": "Broken Authentication",
+        "a":"SQL Injection",
+        "b":"Broken Authentication",
+        "c":"Insecure Direct Object References",
+        "d":"Sensitive Data Exposure",
+        "type":"multiple",
+        "category":"web theory",
+        "depends_on":"",
+        "points": 25,
+        "hint_penalty": 5,
+        "flag_penalty": 5
+}

@@ -1,0 +1,11 @@
+<script>
+	var source = new EventSource("{{ url_for('sse.stream', channel=current_team.name) }}");
+	// source.onmessage = function(e){
+	// 	console.log(e.data)
+	// }
+source.addEventListener('greeting', function(event) {
+    var data = JSON.parse(event.data);
+    console.log(data)
+    // do what you want with this data
+}, false);
+</script>

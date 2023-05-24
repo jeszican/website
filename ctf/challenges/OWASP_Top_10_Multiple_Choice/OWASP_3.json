@@ -1,0 +1,19 @@
+{
+        "country_code":"ve",
+	"color":"#EC7D32",
+        "name": "OWASP Top 10: 🤝",
+        "description": "Which of these might allow for storage of malicious code on a vulnerable website?",
+        "hint": "Have you googled all the options?",
+        "links": "[\"https://www.owasp.org/index.php/Top_10_2017-Top_10\"]", 
+        "flag": "Cross Site Scripting",
+        "a":"Broken Authentication & Session Management",
+        "b":"Cross Site Request Forgery",
+        "c":"Source Code Monitoring",
+        "d":"Cross Site Scripting",
+        "type":"multiple",
+        "category":"web theory",
+        "depends_on":"",
+        "points": 25,
+        "hint_penalty": 5,
+        "flag_penalty": 5
+}

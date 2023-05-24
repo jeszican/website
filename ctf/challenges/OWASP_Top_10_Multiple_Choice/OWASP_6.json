@@ -1,0 +1,19 @@
+{
+        "country_code":"uy",
+	"color":"#EC7D32",
+        "name": "OWASP Top 10: 🤐",
+        "description": "A users username and password is sent via a HTTP get request, why is this an issue?",
+        "hint": "HTTP Get requests are sent in plain text. :)",
+        "links": "[\"https://www.owasp.org/index.php/Top_10_2017-Top_10\"]", 
+        "flag": "Get requests can appear in logs",
+        "a":"User can see it in their browser",
+        "b":"Get requests can appear in logs",
+        "c":"Get requests are old fashioned",
+        "d":"The developer was just lazy and there's no security concerns",
+        "type":"multiple",
+        "category":"web theory",
+        "depends_on":"",
+        "points": 25,
+        "hint_penalty": 5,
+        "flag_penalty": 5
+}

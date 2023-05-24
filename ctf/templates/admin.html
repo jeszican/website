@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+	<meta charset="utf-8">
+	<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+	<title>DCTF - Admin</title>
+	<!-- jquery js -->
+	<script src="/static/js/lib/jquery-3.3.1.min.js"></script>
+	<!-- font awesome -->
+	<script src="/static/js/lib/font-awesome.js"></script>
+	<!-- socketio -->
+	<script type="text/javascript" src="/static/js/lib/socket.io.js"></script>
+	<!-- popper js -->
+	<script src="/static/js/lib/popper.js"></script>
+	<!-- bootstrap-->
+	<link rel="stylesheet" href="/static/css/lib/bootstrap.min.css">
+	<script src="/static/js/lib/bootstrap.js"></script>
+	<!-- custom -->
+	<link rel="stylesheet" href="/static/css/admin.css">
+	<script src="/static/js/admin.js"></script>
+	<!-- favicon -->
+	<link rel="icon" type="image/vnd.microsoft.icon" href="/static/img/favicon.png">
+</head>
+
+<body class="admin container-fluid">
+	<div class="row">
+		{% set list_of_functions = admin_get_all_functions() %}
+		<ul class="nav col-sm-2">
+			{% for function in list_of_functions %}
+			<!-- if its a group of functions -->
+			{% if "type" in list_of_functions[function] %}
+			<ul>
+				{% set parent_function = function %}
+				{% for function in list_of_functions[parent_function]["functions"] %}
+				{% set list_of_functions = list_of_functions[parent_function]["functions"] %}
+				{% include 'subtemplates/function-item.html' %}
+				{% endfor %}
+			</ul>
+			{% else %}
+			{% include 'subtemplates/function-item.html' %}
+			{% endif %}
+			{% endfor %}
+		</ul>
+		<div class="col-sm-10 dashboard">
+			<div class="row">
+			</div>
+			<div class="row">
+				<div class="col-sm-4">
+					<div class="card mb-2">
+						{% if admin_get_ctf_begun() %}
+							<div class="card-header playing">
+								<i class="fas fa-info-circle"></i>
+								<h6 class="mb-0">
+									ctf playing
+								</h6>
+							</div>
+						{% else %}
+							<div class="card-header stopped">
+								<i class="fas fa-info-circle"></i>
+								<h6 class="mb-0">
+									ctf stopped
+								</h6>
+							</div>
+						{% endif %}
+						<div class="collapse">
+							<div class="card-body">
+							</div>
+						</div>
+					</div>
+					<div class="accordion">
+						<div class="card">
+							<div class="card-header">
+								<h5 class="mb-0">
+									<button class="btn btn-link" type="button" data-toggle="collapse"
+										data-target="#collapseTeams" aria-expanded="true">
+										Teams
+									</button>
+									<span class="badge badge-light">{{ admin_get_all_teams()|length }}</span>
+								</h5>
+							</div>
+							<div id="collapseTeams" class="collapse show">
+								<div class="card-body">
+									<table class="table table-borderless table-hover">
+										<tr>
+											<th>Team Name</th>
+											<th>Invite Code</th>
+										</tr>
+										{% for team in admin_get_all_teams() %}
+										<tr class="copy">
+											<td >
+												<a data-toggle="tooltip" data-placement="top" title="
+												<table style='width: 100px;text-align:left;'>
+													<tr><th>Points</th><th>Icon</th></tr>
+													<tr><td>{{ team.total_points }}</td><td style='height:30px;'><img width=25px src='/static/img/icons/{{ team.logo }}'></img></td></tr>
+												</table>">{{ team.team_name }}</a>
+											</td>
+											<td class="copy-this">{{ team.team_code }}</td>
+										</tr>
+										{% endfor %}
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="accordion">
+						<div class="card">
+							<div class="card-header">
+								<h5 class="mb-0">
+									<button class="btn btn-link" type="button" data-toggle="collapse"
+										data-target="#collapseSounds" aria-expanded="true">
+										Sounds
+									</button>
+									<span class="badge badge-light">{{ admin_list_team_sounds()|length }}</span>
+								</h5>
+							</div>
+
+							<div id="collapseSounds" class="collapse">
+								<div class="card-body">
+									<table class="table table-borderless sounds table-hover">
+										{% for i in admin_list_team_sounds() %}
+										<tr onclick="$(this).find('audio')[0].play();">
+											<td>
+												<a>{{ i }}</a>
+												<audio>
+													<source src="/static/flags/{{ i }}" type="audio/mp3">
+												</audio>
+											</td>
+										</tr>
+										{% endfor %}
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+				<div class="col-sm-4">
+					<div class="accordion">
+						<div class="card">
+							<div class="card-header">
+								<h5 class="mb-0">
+									<button class="btn btn-link" type="button" data-toggle="collapse"
+										data-target="#collapseIcons" aria-expanded="true">
+										Icons
+									</button>
+									<span class="badge badge-light">{{ admin_list_team_icons()|length }}</span>
+								</h5>
+							</div>
+
+							<div id="collapseIcons" class="collapse">
+								<div class="card-body">
+									<table class="table table-borderless icons table-hover">
+										{% for i in admin_list_team_icons() %}
+										<tr>
+											<td>{{ i }}</td>
+											<td><img src="/static/img/icons/{{ i }}"></img></td>
+										</tr>
+										{% endfor %}
+									</table>
+								</div>
+							</div>
+						</div>
+					</div>
+				</div>
+			</div>
+		</div>
+
+		<!-- 
+			<div class="box-container col-sm-12">
+			
+			<table>
+			{% for s in admin_list_team_sounds() %}
+				<tr>
+				<td>{{ s }}</td>
+				<td>
+				<audio controls>
+				  <source src="/static/sounds/{{ s }}" type="audio/mp3">
+				</audio>
+				</td>
+				</tr>
+			{% endfor %}
+			</table>
+			</div> -->
+	</div>
+
+</html>

@@ -1,0 +1,116 @@
+<div class="modal" id="challengeModal">
+<div id="modal-header">
+	<div class="window-bar">
+		{% if "modern" in game_get_gameboard_theme() %}
+			<i class="fas fa-sticky-note mr-2"></i>
+		{% else %}
+			<img src="/static/img/notepad.png"></img>
+		{% endif %}
+		<span id="challenge-name">challenge name</span>
+		<span class="close-btn" onclick="closeModal()">
+			{% if "modern" in game_get_gameboard_theme() %}
+				<i class="fas fa-times"></i>
+			{% else %}
+				&Cross;
+			{% endif %}
+		</span>
+	</div>
+	<input class="hidden" id="country-code"></input>
+</div>
+<div id="modal-body">
+	<span id="challenge-type">challenge type</span>
+	<span id="challenge-category">challenge category</span>
+	<fieldset>
+		<legend>description</legend>
+		<div id="challenge-description">question description</div>
+	</fieldset>
+	<div id="challenge-links"><span class="skeleton-link"><a href='' target="_blank">Link 1</a></span></div>
+	<div id="challenge-audio"><span id="audio-player"></span></div>
+	<div id="challenge-answer">
+	<div id="countdown-form">Self destruct in: 
+		<span class="days"></span> days
+		<span class="hours"></span> hours
+		<span class="minutes"></span> minutes
+		<span class="seconds"></span> seconds
+	</div>
+	<form id="upload-form">
+		<input autocomplete="off" type="file" name="upload" id="file-upload"></input>
+		<button type="button" id="submit" onclick="submitSubmission(this)">Submit</button>
+	</form>
+	<form id="flag-form">
+		<input autocomplete="off" placeholder="flag.." type="text" name="flag" id="text-flag"></input>
+		<div id="submit-answer">
+			<span id="launch-time"></span>
+			<button type="button" class="launch" onclick="launchChallenge(this)">
+				<span>Launch</span>
+				{% if "modern" in game_get_gameboard_theme() %}
+				<i class="loading-img fas fa-spinner fa-pulse"></i>
+				{% else %}
+					<img class="loading-img" src="/static/img/loading_animation.gif"></img>
+				{% endif %}				</button>
+			<button type="button" class="kill" onclick="killChallenge(this)">
+				<span>Kill</span>
+				{% if "modern" in game_get_gameboard_theme() %}
+					<i class="loading-img  fas fa-spinner fa-pulse"></i>
+				{% else %}
+					<img class="loading-img" src="/static/img/loading_animation.gif"></img>
+				{% endif %}	
+			</button>
+			<button type="button" id="submit" onclick="submitFlag(this)">Submit</button>
+		</div>
+	</form>
+	<form id="multiple-form">
+		<table id="multiple-choice">
+			<tr><th><button type="button" id="flag-a" class="a submit-multiple">A</button></th><td id="challenge-a">a</td>
+			<th><button type="button" id="flag-c" class="c submit-multiple">C</button></th><td id="challenge-c">c</td></tr>
+			<tr><th><button type="button" id="flag-b" class="b submit-multiple">B</button></th><td id="challenge-b">b</td>
+			<th><button type="button" id="flag-d" class="d submit-multiple">D</button></th><td id="challenge-d">d</td></tr>
+			<tr><td colspan=4>
+			<span id="launch-time"></span>
+			<button type="button" class="launch" onclick="launchChallenge(this)">
+				<span>Launch</span>
+				{% if "modern" in game_get_gameboard_theme() %}
+					<i class="loading-img fas fa-spinner fa-pulse"></i>
+				{% else %}
+					<img class="loading-img" src="/static/img/loading_animation.gif"></img>
+				{% endif %}				
+			</button>
+			<button type="button" class="kill" onclick="killChallenge(this)">
+				<span>Kill</span>
+				{% if "modern" in game_get_gameboard_theme() %}
+					<i class="loading-img fas fa-spinner fa-pulse"></i>
+				{% else %}
+					<img class="loading-img" src="/static/img/loading_animation.gif"></img>
+				{% endif %}	
+			</button>
+			</td></tr>
+		</table>
+	</form>
+	</div>
+	<div id="hint">
+		<table>
+			<tr>
+				<td id="hint-content"></td>
+				<td>
+					<button id="hint-btn" class="small-but" onclick="buyHint(this)">Hint</button>
+				</td>
+			</tr>
+		</table>
+	</div>
+</div>
+<div id="modal-footer">
+	<div class="bold" id="points">points <span class="blue-text" id="challenge-points">points</span></br>
+	flag penalty <span class="red-text" id="flag-penalty">points</span></br>
+	hint penalty <span class="red-text" id="hint-penalty">points</span>
+	</div>
+	<div id="completed">
+		<table id="teams-completed">
+			<thead>
+			<tr><th>completed by:</th></tr>
+			</thead>
+			<tbody>
+			</tbody>
+		</table>
+	</div>
+</div>
+</div>

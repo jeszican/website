@@ -1,0 +1,64 @@
+<div class="modal" id="scoreboard">
+	<div id="modal-header">
+		<div class="window-bar">
+			{% if "modern" in game_get_gameboard_theme() %}
+				<i class="fas fa-star mr-2"></i>
+			{% else %}
+				<img src="/static/img/star.png"></img>
+			{% endif %}
+			<span>Scoreboard</span>
+			<span class="close-btn" onclick="closeScoreboard()">
+				{% if "modern" in game_get_gameboard_theme() %}
+				<i class="fas fa-times"></i>
+				{% else %}
+				&Cross;
+				{% endif %}
+			</span>
+		</div>
+	</div>
+	<div id="modal-body">
+		<table id="scores">
+			<!--  a row for a user -->
+			<tr>
+				<td colspan=2>
+					<table id="first-place">
+						<tr>
+							<th class="scoreboard-rank" id="first" colspan=2>1.</th>
+						</tr>
+						<tr>
+							<td class="logo"></td>
+							<td class="team-name"><span class="team-score"></span></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td colspan=2>
+					<table id="second-place">
+						<tr>
+							<th class="scoreboard-rank" id="second" colspan=2>2.</th>
+						</tr>
+						<tr>
+							<td class="logo"></td>
+							<td class="team-name"><span class="team-score"></span></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tr>
+				<td colspan=2>
+					<table id="third-place">
+						<tr>
+							<th class="scoreboard-rank" id="third" colspan=2>3.</th>
+						</tr>
+						<tr>
+							<td class="logo"></td>
+							<td class="team-name"><span class="team-score"></span></td>
+						</tr>
+					</table>
+				</td>
+			</tr>
+			<tbody id="noobs"></tbody>
+		</table>
+	</div>
+</div>

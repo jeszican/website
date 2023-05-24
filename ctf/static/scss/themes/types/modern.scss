@@ -1,0 +1,555 @@
+@use "../../components/scanlines.scss"; 
+@use "../../components/hover_effect.scss"; 
+@use "sass:color";
+
+@import url('https://fonts.googleapis.com/css2?family=Share+Tech+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Source+Sans+Pro:wght@700&display=swap');
+
+@mixin theme($name, $colors) {
+	body.modern {
+
+		&.#{$name} {
+
+			#dialog {
+				background-color: map-get($colors, "theme-neutral");
+				color: white;
+				border-radius: 5px;
+
+				button {
+					border-radius: 15px;
+					width: 80px;
+					border: none;
+					height: 30px;
+					align-items: center;
+					background-color: tomato;
+				}
+			}	
+
+			&.eventboard { 
+				--text-family: 'Share Tech Mono', monospace;	
+				--text-color: white;
+				color: white; 
+				background-color: map-get($colors, "theme"); height: 100vh; 
+				// .col-sm-12.map-container.map-container {
+				// 	background: none;
+				// }
+				.leaderboard-table { 
+					th { color: map-get($colors, "theme-bright"); }
+					tr td { border: none; padding-top: 0.5em; padding-bottom: 0.5em; }
+
+				} 
+				.col-sm-12 { padding: 0; height: 100%; }
+				.row { margin-right: 0; }
+				.col-sm-8 {
+					height: 100%;
+					display: flex;
+					align-items: flex-start;
+					padding: 1%;
+					flex-direction: column;
+				}
+				#eventlog { overflow: scroll; }
+				#eventlog div { background-color: map-get($colors, "theme-dark"); 
+					border-radius: 5px; }
+				.graph-container { margin-bottom: 2%; height: 49%; border: 2px solid map-get($colors, "theme-bright"); width: 100%; }
+				.graph-window {
+					background-color: map-get($colors, "theme");
+					background-image: linear-gradient(map-get($colors, "very-light") 2px, transparent 2px),
+						linear-gradient(90deg, map-get($colors, "very-light") 2px, transparent 2px),
+						linear-gradient(map-get($colors, "very-light") 1px, transparent 1px),
+						linear-gradient(90deg, map-get($colors, "very-light") 1px, transparent 1px);
+					background-size: 75px 75px, 75px 75px, 15px 15px, 15px 15px;
+					background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+				}
+				#eventboard-dash { height: 100%;  }
+				.leaderboard { 
+					width: 100%;
+					overflow: scroll;
+					height: 100%;
+					padding: 20px;
+					/* margin: 20px; */
+					background-color:map-get($colors, "theme-dark");
+				}
+			}
+
+			--map-color: #{map-get($colors, "map-color")};
+			--map-outline: #{map-get($colors, "map-outline")};
+			--background-color: #{map-get($colors, "background-color")};
+			--complete-color: #{map-get($colors, "complete-color")};
+			--highlight-color: #{map-get($colors, "highlight-color")}; 
+
+			font-size: 15px;
+			color: map-get($colors, "text");
+
+			.menu button, button#submit {
+				color: map-get($colors, "theme-light");
+				font-size: 21px;
+				font-family: 'Source Sans Pro', sans-serif;	
+				background: none;
+				border: none;
+				letter-spacing: 1px;
+				font-variant: all-small-caps;
+				@include hover_effect.hover(map-get($colors, "theme-light"));
+				height: 30px;
+				display: flex;
+				align-items: flex-end;
+
+				&:hover {
+					text-decoration: none;
+				}
+			}
+
+			font-family: 'Share Tech Mono', monospace;	
+
+			.date, .figure {
+				color: map-get($colors, "accent");
+			}
+
+			marquee.announcements {
+				font-size: 15px;
+
+			}
+
+			#total-points {
+				color: map-get($colors, "accent");
+				padding-left: 1vw;
+			}
+			.col-sm-12.map-container {
+				background-color: map-get($colors, "theme-dark");
+			}
+
+			.heading {
+				color: map-get($colors, "theme-light");
+				margin-right: 10px; 
+				font-size: 21px;
+				font-family: 'Source Sans Pro', sans-serif;	
+			}
+
+			#vmap {
+				@include scanlines.scanlines;
+				height: 100%;
+				width: 100%;
+				border: none;
+			}
+
+			#usmap { width: 100%; height: 100%; display: none;
+				button {
+					z-index: 3;
+					background: none;
+					border: 2px solid map-get($colors, "theme-bright");
+					border-radius: 20px;
+					color: map-get($colors, "theme-bright");
+					margin-top: 20%;
+				}
+			}
+
+			.tv-container {
+				background: radial-gradient(transparent 60%, #000);
+				height: 100%;
+				position: absolute;
+				width: 100%;
+				top: 0;
+				z-index: 2;
+				left: 0;
+				pointer-events: none;
+			}
+
+			.challenge-table {
+				color: map-get($colors, "text"); 
+				margin-left: 0.5em;
+
+				tbody>tr td {
+					padding-bottom: 1em;
+				}
+
+				tbody>tr:hover {
+					background-color: map-get($colors, "theme-darkest");
+				}
+
+			}
+
+			// the map background
+			.map {
+				background-color: map-get($colors, "theme");
+				background-image: linear-gradient(map-get($colors, "very-light") 2px, transparent 2px),
+					linear-gradient(90deg, map-get($colors, "very-light") 2px, transparent 2px),
+					linear-gradient(map-get($colors, "very-light") 1px, transparent 1px),
+					linear-gradient(90deg, map-get($colors, "very-light") 1px, transparent 1px);
+				background-size: 75px 75px, 75px 75px, 15px 15px, 15px 15px;
+				background-position: -2px -2px, -2px -2px, -1px -1px, -1px -1px;
+			}
+
+			#challenge-type, #challenge-category {
+				padding: 2px 10px;
+				border-radius: 10px;
+			}
+
+			#challenge-preview {
+				z-index:4;
+				background-color: map-get($colors, "theme");
+				border: 2px solid map-get($colors, "theme-light");
+				color: map-get($colors, "text");
+
+				#challenge-category {
+					margin-top: 5px;
+				}
+
+				.challenge-name {
+					padding-top: 10px;
+				}
+			}
+
+			#submit-answer {
+				align-items: baseline;
+			}
+			button.launch {
+				border-radius: 15px;
+				width: 80px;
+				border: none;
+				height: 30px;
+				align-items: center;
+			}
+			button.kill {
+				border-radius: 15px;
+				width: 80px;
+				border: none;
+				height: 30px;
+				align-items: center;
+			}
+
+			.kill-all {
+				border-radius: 15px;
+				border: none;
+				padding-left:15px;
+				padding-right: 15px;
+			}
+
+			.list-view-tab {
+				background-color: map-get($colors, "theme-neutral");
+				
+				span.open-button  { 
+					color: map-get($colors, "theme-light");
+					font-family: source sans pro;
+					font-size: 15px;
+					letter-spacing: 1px;
+				}
+
+			}
+
+			.team-info {
+				padding: 0.5em 1.5em;
+				color: map-get($colors, "text");
+				border: 2px solid map-get($colors, "theme-light");
+
+				table {
+					height: 100%;
+				}
+
+			}
+
+			.menu-bar {
+				position: absolute;
+				z-index: 5;
+				padding: 0.5em 1em;
+				
+				&.bottom {
+					bottom: 0;
+					display: flex;
+					justify-content: space-between;
+					flex-direction: row;
+					align-items: baseline;
+				}
+
+				&.top {
+					top: 0;
+					padding-right: 2vw;
+				}
+			}
+
+			.clock-container {
+				display: flex;
+				align-items: center;
+				margin-right: 5vw;
+			}
+
+			.jqvmap-zoomout {
+				margin-top: 10px;
+				text-align: center;
+				color: map-get($colors, "theme-bright");
+				background-color: transparent;
+				font-size: 24px;
+				border: 2px solid map-get($colors, "theme-bright");
+				border-radius: 50%;
+			}
+			
+			.jqvmap-zoomin {
+				margin-top: -50vh;
+				text-align: center;
+				color: map-get($colors, "theme-bright");
+				background-color: transparent;
+				font-size: 24px;
+				border: 2px solid map-get($colors, "theme-bright");
+				border-radius: 50%;
+			}
+
+			.window-bar { 
+				padding: 15px; 
+				align-items: center;
+			}
+
+			.modal {
+
+				&.login-modal {
+					background-color: color.scale(map-get($colors, "theme-neutral"), $lightness: 5%); ;
+
+					legend {
+						padding-left: 0.5em;
+						padding-top: 0;
+					}
+
+					button {
+						border-radius: 15px;
+						border: none;
+						padding-left:15px;
+						text-decoration: none;
+						padding-right: 15px;
+						margin-left: 0.5em;
+						background-color: map-get($colors, "accent3");
+						
+						&[type="submit"] {
+							background-color: yellowgreen;
+							margin-left: 0;
+						}
+					}
+
+					input {
+						background-color: map-get($colors, "theme");
+						border: none;
+						border-radius: 25px;
+						padding-left: 15px;
+						width: 100%;
+						color: white;
+						height: 30px;
+					}
+				}
+
+				#text-flag {
+					&.correct {
+						border: 1px solid #86bc25;
+						color: #86bc25;
+					}
+
+					&.wrong {    
+						border: 1px solid tomato;
+   						color: tomato;
+						background-color: black;
+					}
+				}
+				// border: 3px outset;
+				background-color: color.scale(map-get($colors, "theme-neutral"), $lightness: 5%); ;
+				border-radius: 5px;
+				color: map-get($colors, "text");
+
+				#modal-body {
+					padding-top: 0;
+				}
+
+				#modal-footer {
+					background-color: map-get($colors, "theme-dark");
+					border-radius:5px;
+					border: none;
+				}
+
+				#chals tr:hover {
+					background-color: map-get($colors, "theme-darkest");
+				}
+
+				&#scoreboard {
+					td.logo {
+					}
+
+					span.team-score {
+						color: lightseagreen;
+					}
+
+					.rank {
+						color: #009a44;
+					}
+					table#third-place {
+						border-bottom: 1px solid grey;
+					}
+					th.scoreboard-rank#first {
+						font-size: 25px;
+						background: -webkit-linear-gradient(#f700bb, steelblue);
+						-webkit-background-clip: text;
+						-webkit-text-fill-color: transparent;
+					}
+
+					th.scoreboard-rank#second {
+						font-size: 25px;
+						background: -webkit-linear-gradient(blue, coral);
+						-webkit-background-clip: text;
+						-webkit-text-fill-color: transparent;
+					}
+
+					th.scoreboard-rank#third {
+						font-size: 25px;
+						background: -webkit-linear-gradient(purple, yellow);
+						-webkit-background-clip: text;
+						-webkit-text-fill-color: transparent;
+					}
+				}
+
+	
+				#teams-completed {
+					color: deeppink;
+
+					th {
+						color: mediumslateblue;
+					}
+				}
+
+				fieldset {
+					margin-top: 0.5vh;
+					border: none;
+					
+					// border-radius: 5px;
+				}
+
+				#challenge-links {
+					margin-top: 10px;
+					margin-bottom: 10px;
+				}
+
+				span.link { 
+					width: 85px; 
+
+					a {
+						border-radius: 25px;
+						display: block;
+						height: 30px;
+						line-height: 15px;
+						text-align: center;
+						background-color: map-get($colors, "accent2");
+						border: none;
+					}
+				}
+
+				legend {
+					color: map-get($colors, "theme-light");
+					margin-right: 10px; 
+					font-size: 21px;
+					margin-left: 0;
+					padding-top: 15px;					
+					font-family: 'Source Sans Pro', sans-serif;		
+					font-variant: all-small-caps;	
+					letter-spacing: 1px;			
+				}
+
+				#challenge-description {
+					padding-top: 5px;
+					padding-left: 3px;
+				}
+
+				#launch-time {
+					color: red;
+				}
+
+				#hint {
+					table {
+						border-collapse: separate;
+						background-color: white;
+						border: none;
+						color: black;
+						border-radius: 5px;
+
+						button {
+							background-color: map-get($colors, "accent3");
+							color: white;
+							border-radius:15px;
+							width: 55px;
+							border: none;
+							height: 30px;
+							margin-right: 5px;
+
+							&:hover {
+								text-decoration: none;
+							}
+						}
+
+						&.greyed-out {
+							background-color: grey;
+							color: white;
+						}
+					}
+				}
+
+				table#multiple-choice {
+					tr:last-child {
+						border: none;
+					}
+
+					tr:not(:last-child) {
+						th:hover {
+							background-color: map-get($colors, "theme-dark");
+
+							+ td {
+								background-color: map-get($colors, "theme-dark");
+							}
+						}
+					}
+				
+					button {
+						color: black;
+						width: 35px;
+						height: 35px;
+						border: none;
+
+						&:hover {
+							text-decoration: none;
+						}
+					}
+
+				}
+
+				audio {
+					background-color: rgb(241, 243, 244);
+					border: 2px inset;
+				}
+
+				#flag-form {
+					input {
+						background-color: map-get($colors, "theme");
+						border: none;
+						border-radius: 25px;
+						padding-left: 15px;
+						width: 100%;
+						color: white;
+					}
+				}
+			}
+			&.landing {
+				@include scanlines.scanlines;
+	
+				background-color: map-get($colors, "theme");
+
+				.parallax {
+					background-image: url("/static/img/grid.gif");
+					background-position: center;
+					background-size: cover;
+					opacity: 0.3;
+					filter: saturate(0.0);
+					position: absolute;
+					top: 0;
+					width: 100%;
+					height: 100%;
+
+
+				}
+				
+			}
+		}
+
+		
+	}
+
+}

@@ -1,0 +1,20 @@
+{
+        "country_code":"us-tx",
+	"color":"#5C9BD5",
+        "name": "Computer Misuse Act: 👮",
+        "description": "Which offence of the computer misuse act is most applicable: \n\nMy friend sent those bad photos of me to a couple of boys I like, I wrote some code to delete the pictures and spread it to them via text message.",
+        "hint": "The key here is that they wrote something.",
+        "links": "",
+	"audio":"cma8.mp3",
+        "flag": "Offence 3a",
+        "a":"Offence 1",
+        "b":"Offence 2",
+        "c":"Offence 3a",
+        "d":"Offence 3",
+        "category":"legislation",
+        "type":"multiple",
+        "points": 50,
+        "hint_penalty": 5,
+        "flag_penalty": 15
+}
+

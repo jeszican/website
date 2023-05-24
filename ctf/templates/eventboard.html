@@ -1,0 +1,141 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Score Watch</title>
+
+		<!-- jquery js -->
+		<script src="static/js/lib/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+		<!-- socketio -->
+		<script type="text/javascript" src="/static/js/lib/socket.io.js"></script>
+		<script type="text/javascript" src="/static/js/lib/harlem_shake.js"></script>
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="/static/css/lib/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<!-- chart -->
+		<script src="/static/js/lib/Chart.bundle.js"></script>
+
+		<!-- main css -->
+		<link rel="stylesheet" href="/static/css/main.css">
+		<link rel="stylesheet" href="/static/css/harlem_shake.css">
+		<!-- main -->
+		<link rel="icon" type="image/vnd.microsoft.icon" href="/static/img/favicon.png">
+		<script>
+			var event_room = "{{ url_for('sse.stream', channel='EVENTS') }}"
+		</script>
+		<script src="/static/js/eventboard.js"></script>
+	</head>
+<body class="eventboard {{ event_get_eventboard_theme() }}">
+<div class="container-fluid content-container">
+	<div class="col-sm-12">
+		<div id="eventboard-dash" class="row">
+			<div class="col-sm-4">
+					<div class="leaderboard">
+					<h7 class="heading">Leaderboard:</h7>
+					<div class="table-container">
+					<table class="leaderboard-table">
+						<thead><tr><th width='20%'>Rank</th><th width='60%'>Name</th><th>Score</th></tr></thead>
+						<tbody>
+							{% for team in leaderboard %}
+							<tr>
+								<td>{{ loop.index }}</td>
+								<td>{{ team["team_name"] }}</td>
+								<td>{{ team["score"] }}</td>
+							</tr>
+							{% endfor %}
+						</tbody>
+					</table>
+					</div>
+					</div>
+			</div>
+			<div class="col-sm-8" style="">
+				<div class="graph-container">
+					<div class="col-sm-12 graph-window pink">
+						<canvas id="score-chart"></canvas>
+					</div>
+				</div>
+			</div>
+
+		</div>
+	</div>
+</div>
+<div class="col-sm-3 eventlog-container" style="padding:0;">
+	<div id="eventlog">
+	{% set animations = ["rotate","rotateHalf","scale","jump","flash","shake","bounce","tada","swing","wobble","wiggle","pulse","flip","flipInX","flipOutX","flipInY","flipOutY","fadeIn"] %}
+	<script>
+	var animations = {{ animations|safe }};
+	</script>
+	{% for event in events %}
+	<div data-animation='{{ animations|random }}'>
+		<fieldset>
+			<legend style="color:{{ event['team_color'] }};">{{ event["team_name"] }}</legend>
+			<table>
+				<tr>
+					<td><img src="/static/img/icons/{{ event["team_logo"] }}"></td>
+					<td>
+						<table>
+							<tr><td>{{ event["challenge_name"] }}</td></tr>
+							<tr><td><span class="points">+{{ event["points"] }} points</span></td></tr>
+						</table>
+					</td>
+				</tr>
+			</table>
+		</fieldset>
+	</div>
+	{% endfor %}
+	</div>
+</div>
+
+<div class="triple-flag-streak" data-animation="scale" style="display:none;">
+</div>
+
+<script>
+var ctx = document.getElementById('score-chart').getContext('2d');
+Chart.defaults.global.defaultFontColor = getComputedStyle($("body")[0]).getPropertyValue('--text-color');
+Chart.defaults.global.defaultFontFamily = getComputedStyle($("body")[0]).getPropertyValue('--text-family');
+
+var myChart = new Chart(ctx, {
+    type: 'line',
+    data: {
+        labels: {{ score_history["time"]|safe }},
+        datasets: [
+		{% for team in score_history["teams"] %}
+	    { label: "{{ team }}",
+            data: {{ score_history["teams"][team]["score"] }},
+            borderWidth: 1,
+	    borderColor: '{{ score_history["teams"][team]["color"] }}',
+	    backgroundColor: '{{ score_history["teams"][team]["color"] }}',
+	    fill: false,
+	    lineTension:0 },
+		{% endfor %}
+		]
+    },
+    options: {
+	title: { display: true, text: "TEAM POINTS OVER TIME"},
+	legend: { position: "bottom" },
+	maintainAspectRatio: false,
+        scales: {
+            yAxes: [{
+			ticks: {
+				beginAtZero: true,
+				max: {{ max_score + 1 }},
+
+			},
+			gridLines: {
+		                color: "rgba(0, 0, 0, 0)",
+					}
+	        }],
+            xAxes: [{
+				ticks: {
+
+				},
+				gridLines: {
+		                color: "rgba(0, 0, 0, 0)",
+					}
+            }]
+        }    
+    }
+});
+
+</script>
+

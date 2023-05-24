@@ -1,0 +1,20 @@
+{
+        "country_code":"us-mt",
+	"color":"#5C9BD5",
+        "name": "Computer Misuse Act: 👮",
+        "description": "Which offence of the computer misuse act is most applicable: \n\nMy friend took some horrible photos of me at a party so when she was asleep I wiped her phone back to factory settings! I hope she'll think it was a glitch.",
+        "hint": "The 'wiping back to factory settings' is the important part here.",
+        "links": "",
+	"audio":"cma6.mp3",
+        "flag": "Offence 3",
+        "a":"Offence 3",
+        "b":"Not an offence",
+        "c":"Offence 3a",
+        "d":"Offence 2",
+        "category":"legislation",
+        "type":"multiple",
+        "points": 50,
+        "hint_penalty": 5,
+        "flag_penalty": 15
+}
+

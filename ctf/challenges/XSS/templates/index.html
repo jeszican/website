@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;400&display=swap" rel="stylesheet">
+
+    <title>Catsearch</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+    <script>
+        var input = document.getElementById("searchBtn");
+        input.addEventListener("keyup", function (event) {
+            if (event.keyCode === 13) {
+                event.preventDefault();
+                document.getElementById("").click();
+            }
+        });
+    </script>
+</head>
+
+<body>
+    <div class="container">
+        <div>
+            <h1>catsearch.com</h1>
+            <form method="POST" action="{{ url_for('search') }}">
+                {% for field in form %}
+                {{ field }}
+                {% endfor %}
+                <button type="submit" id="searchBtn" style="display:none;"></button>
+            </form>
+            <p>
+                {{ results }}
+            </p>
+            <div class="top-left">
+                <p>
+                <h2>history</h2>
+                {% for sh in search_history %}
+                <span style="margin-bottom:1vh;display:block;font-size:15px;font-family:courier;">{{ sh|safe }}</span>
+                {% endfor %}
+                </p>
+            </div>
+        </div>
+    </div>
+</body>
+
+</html>

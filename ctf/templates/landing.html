@@ -1,0 +1,82 @@
+<!doctype html>
+<html lang="en">
+	<head>
+		<meta charset="utf-8">
+		<meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+		<title>Login | Capture the Flag</title>
+		
+		<!-- jquery js -->
+		<script src="static/js/lib/jquery-3.3.1.min.js" crossorigin="anonymous"></script>
+		<!-- socketio -->
+		<script type="text/javascript" src="static/js/lib/socket.io.js"></script>
+		<!-- Bootstrap core CSS -->
+		<link rel="stylesheet" href="static/css/lib/bootstrap.min.css" integrity="sha384-ggOyR0iXCbMQv3Xipma34MD+dH/1fQ784/j6cY/iJTQUOhcWr7x9JvoRxT2MZw1T" crossorigin="anonymous">
+		<script src="/static/js/lib/font-awesome.js"></script>
+
+		<!-- login css -->
+		<link rel="stylesheet" href="static/css/main.css">
+		<!-- main -->
+		<script src="static/js/landing.js"></script>
+		<link rel="icon" type="image/vnd.microsoft.icon" href="/static/img/favicon.png">
+
+	</head>
+<body class="landing {{ game_get_gameboard_theme() }}">
+<div class='parallax'>
+<div id='stars1'></div>
+<div id='stars2'></div>
+<div id='stars3'></div>
+</div>
+<div class="container-fluid content-container">
+	<div class="modal-container">
+		<div class="login-modal modal">
+			<div class="window-bar">
+				{% if "modern" in game_get_gameboard_theme() %}
+				<i class="fas fa-key mr-2"></i>
+				{% else %}
+				<img src="/static/img/login.png"></img>
+				{% endif %}
+				<span>Deloitte CTF</span>
+			</div>
+			<table>
+				
+				<tr id="login" {{ "style=display:none;" if mode == "register" else "" }}>
+					<td>
+						<button onclick="switchForm()" class="bright">Haven't played before?</button>
+						<p class="error">{{ message }}</p>
+						<form id="login-form" action="/login" method="post">
+							<fieldset>
+								<legend>welcome, login!</legend>
+							<table>
+								<tr><td><input type="text" placeholder="username" name="username"></input></td></tr>
+								<tr><td><input type="password" placeholder="password" name="password"></input></td></tr>
+								<tr><td><button class="mt-2" type="submit">Submit</button></td></tr>
+							</table>
+						</fieldset>
+						</form>
+					</td>
+				</tr>
+				<tr id="register" {{ "style=display:none;" if mode == "login" else "" }}>
+					<td>
+						<button onclick="switchForm()" class="bright green">Played before?</button>
+						<p class="error">{{ message }}</p>
+						<form id="register-form" action="/register" method="post">
+							<fieldset>
+								<legend>please register..</legend>
+							<table>
+								<tr><td><input type="text" placeholder="username" name="username"></input></td></tr>
+								<tr><td><input type="email" placeholder="email" name="email"></input></td></tr>
+								<tr><td><input type="password" placeholder="password" name="password"></input></td></tr>
+								<tr><td><input type="password" placeholder="confirm password" name="confirm_password"></input></td></tr>
+								<tr><td><input type="invite" placeholder="invite code" name="invite_code"></input></td></tr>
+								<tr><td><button type="submit">Submit</button></td></tr>
+							</table>
+						</fieldset>
+						</form>
+					</td>
+				</tr>
+			</table>
+		</div>
+	</div>
+
+</div>
+</html>

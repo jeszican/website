@@ -1,0 +1,40 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;400&display=swap" rel="stylesheet">
+
+    <title>Login | Cattobank</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="login-form">
+            <h1>admin login</h1>
+            <span style="text-align:center;width:100%;display:block;color:tomato;">{{ error }}</span>
+            <form method="POST" action="{{ url_for('login') }}">
+                <table>
+                    {% for field in form %}
+                    <tr>
+                        <td>
+                            {{ field }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td>
+                            <button type="submit">
+                                <img src="/static/img/arrow-right-solid.svg" style="width: 17px;">
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

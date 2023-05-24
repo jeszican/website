@@ -1,0 +1,20 @@
+{
+        "country_code":"us-ca",
+	"color":"#5C9BD5",
+        "name": "Computer Misuse Act: 👮",
+        "description": "Which offence of the computer misuse act is most applicable: \n\nThe teacher left the classroom during my detention so I hopped onto her computer. I was hoping she might have the grade changing software open but unfortunately not.",
+        "hint": "Not only did he access a computer, but he intended to do something else.",
+        "links": "",
+	"audio":"cma4.mp3",
+        "flag": "Offence 2",
+        "a":"Offence 3",
+        "b":"Not an offence",
+        "c":"Offence 2",
+        "d":"Offence 1",
+        "category":"legislation",
+        "type":"multiple",
+        "points": 50,
+        "hint_penalty": 5,
+        "flag_penalty": 15
+}
+

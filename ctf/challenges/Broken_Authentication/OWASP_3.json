@@ -1,0 +1,15 @@
+{
+        "country_code": "de",
+        "color": "#B0D601",
+        "name": "Authentication: Oops, its broken",
+        "description": "You need to be logged in as a particular user to access the flag!",
+        "hint": "How are the sessions handled here?",
+        "docker_file": true,
+        "links": "",
+        "flag": "CTF{th1si5fl4g3__!}",
+        "type": "jeopardy",
+        "category": "web",
+        "points": 150,
+        "hint_penalty": 0,
+        "flag_penalty": 0
+}

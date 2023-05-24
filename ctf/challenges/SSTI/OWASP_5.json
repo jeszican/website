@@ -1,0 +1,15 @@
+{
+        "country_code": "es",
+        "color": "#B0D601",
+        "name": "Injection 103: Sprinkle on some Jinja",
+        "description": "This flag is stored in the applications secret key, go get it!",
+        "hint": "Register first, but bear in mind {{ 7*7 }}",
+        "docker_file": true,
+        "links": "",
+        "flag": "CTF{th1si5fl4g5__!}",
+        "type": "jeopardy",
+        "category": "web",
+        "points": 200,
+        "hint_penalty": 0,
+        "flag_penalty": 0
+}

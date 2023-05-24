@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Work+Sans:wght@100;400&display=swap" rel="stylesheet">
+
+    <title>Register | Catbook</title>
+    <link rel="stylesheet" href="/static/css/main.css">
+</head>
+
+<body>
+    <div class="container">
+        <div class="login-form">
+            <h1>sign up</h1>
+            {% for field, errors in form.errors.items() %}
+            <span style="margin-top:1vh;text-align:center;width:100%;display:block;color:tomato;">
+                {{ form[field].label }}: {{ ', '.join(errors) }}
+            </span>
+            {% endfor %}
+            <form method="POST" action="{{ url_for('register') }}">
+                <table>
+                    {% for field in form %}
+                    <tr>
+                        <td>
+                            {{ field }}
+                        </td>
+                    </tr>
+                    {% endfor %}
+                    <tr>
+                        <td>
+                            <button type="submit">
+                                <img src="/static/img/arrow-right-solid.svg" style="width: 17px;">
+                            </button>
+                        </td>
+                    </tr>
+                </table>
+            </form>
+        </div>
+    </div>
+</body>
+
+</html>

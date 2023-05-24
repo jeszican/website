@@ -1,0 +1,15 @@
+{
+        "country_code": "no",
+        "color": "#B0D601",
+        "name": "Identity: Is that you?",
+        "description": "One of the sites users has something much better than money!",
+        "hint": "You need to login first, then find the correct user account",
+        "docker_file": true,
+        "links": "",
+        "flag": "CTF{th1si5fl4g4__!}",
+        "type": "jeopardy",
+        "category": "web",
+        "points": 150,
+        "hint_penalty": 0,
+        "flag_penalty": 0
+}

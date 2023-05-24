@@ -1,0 +1,20 @@
+{
+        "country_code":"us-ar",
+	"color":"#5C9BD5",
+        "name": "Computer Misuse Act: 👮",
+        "description": "Which offence of the computer misuse act is most applicable: \n\nMy friend asked me to look at her ex boyfriends computer, she wanted me to delete any photo evidence they were ever together but we couldn't find any.",
+        "hint": "She accessed with intent.",
+        "links": "",
+	"audio":"cma5.mp3",
+        "flag": "Offence 2",
+        "a":"Offence 3",
+        "b":"Not an offence",
+        "c":"Offence 1",
+        "d":"Offence 2",
+        "category":"legislation",
+        "type":"multiple",
+        "points": 50,
+        "hint_penalty": 5,
+        "flag_penalty": 15
+}
+

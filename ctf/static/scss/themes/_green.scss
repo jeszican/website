@@ -1,0 +1,43 @@
+@use "types/modern.scss";
+@use "types/retro.scss";
+
+@include modern.theme("green", (
+	"theme-dark": #272727,
+	"theme-darkest": #191919,
+	"theme-neutral": rgba(35, 35, 35, 0.9),
+	"theme": #101010,
+	"text": #F5F6F6,
+	"theme-light": yellowgreen,
+	"theme-bright": yellowgreen,
+	"very-light":rgba(128, 128, 128, 0.1),
+	"map-color":#202020,
+	"map-outline":#43B02A,
+	"background-color":#86BC25,
+	"complete-color":#2C5234,
+	"highlight-color":#FF00C1,
+	"accent": darkturquoise,
+	"accent2": #97999b,
+	"accent3":darkorange,
+	"accent4":#f700bb
+));
+
+@include retro.theme("green", (
+	"theme-dark": #272727,
+	"theme-darkest": #191919,
+	"theme-neutral": lightgrey,
+	"theme": #101010,
+	"text": #000000,
+	"theme-light": darkgrey,
+	"theme-bright": yellowgreen,
+	"very-light":rgba(128, 128, 128, 0.1),
+	"map-color":#202020,
+	"map-outline":#43B02A,
+	"background-color":#86BC25,
+	"complete-color":#2C5234,
+	"highlight-color":#FF00C1,
+	"heading":#c4d600,
+	"accent": darkturquoise,
+	"accent2": cadetblue,
+	"accent3":darkorange,
+	"accent4":#f700bb
+));

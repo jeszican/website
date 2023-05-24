@@ -1,0 +1,444 @@
+.window-bar {
+	width: 100%;
+	font-size: 16px;
+	padding-left: 5px;
+
+	position: relative;
+	display: flex;
+
+	.close-btn {
+		float: right;
+		cursor: pointer;
+		position: absolute;
+		margin-right: 1vw;
+		right: -1px;
+	}
+
+	img {
+		height: 20px;
+		margin-right: 5px;
+	}
+}
+
+#overlay {
+	display: none;
+	pointer-events: none;
+	height: 100%;
+	width: 100%;
+	position: absolute;
+	background-color: black;
+	z-index: 2;
+	opacity: 0.6;
+	top: 0;
+	left: 0;
+}
+
+.modal-container {
+	display: none;
+	position: absolute;
+	top: 0;
+	left: 0;
+	width: 100%;
+	height: 100%;
+	align-items: center;
+
+	&.small {
+		width: 60%;
+	}
+}
+
+.modal {
+	height: auto;
+	display: none;
+	position: relative;
+	font-size: 15px;
+	box-shadow: 4px 6px 5px 0px rgba(0, 0, 0, 0.75);
+	width: 35vw;
+	padding-bottom: 2vh;
+	margin-right: auto;
+	margin-left: auto;
+	z-index: 4;
+
+	&#running-instances {
+		width: 50vw; height: 65vh;
+
+		table { border-collapse: separate; width: 100%; }
+	}
+
+	&#scoreboard {
+		width: 35vw; 
+		height: 65vh;
+
+		table#scores { width: 100%; }
+		.rank {font-size:15px;  width: 80px; }
+		table#third-place { width: 100%; margin-bottom: 2vh; padding-bottom: 2vh; }
+		table {
+			border-collapse: separate;
+		}
+
+		td.logo { width: 80px; height: 80px; }
+		td.logo img { width: 100%; height: 100%; }
+		td.team-name { padding-left: 1vw; }
+	}
+
+	legend {
+		margin-bottom: 0;
+		display: block;
+		width: auto;
+		padding: 2px;
+		font-size: 1em;
+		text-align: left;
+		margin-left: 1vw;
+	}
+	
+	#launch-time {
+		width: 40%;
+		text-align: center;
+		line-height: 43px;
+		margin-bottom: 0;
+		text-decoration: underline;
+		margin-right: 1vw;
+	}
+
+	#modal-header #header-items {
+		float: right;
+		cursor: pointer;
+	}
+
+	#modal-body {
+		width: 100%;
+		height: 65%;
+		padding: 1vw;
+
+		#challenge-description {
+			overflow-wrap: break-word;
+			min-height: 35%;
+			width: 100%;
+			white-space: pre-wrap;
+		}
+
+		span.challenge-url {
+			font-style: italic;
+			background-color: white;
+			cursor: pointer;
+		}
+
+		#multiple-form {
+			display: none;
+
+			table {
+				width: 100%;
+			}
+		}
+
+		#upload-form {
+			display: flex;
+			justify-content: space-between;
+			margin-top: 1vh;
+		}
+
+		input[type='file'] {
+			border: 1px solid;
+			padding: 5px;
+			border-radius: 0.25em;
+		}
+	}
+}
+
+#multiple-choice {
+	tr {
+		border-bottom: 1px solid grey;
+	}
+
+	td {
+		font-size: 15px !important;
+	}
+
+	button {
+		width: 100%;
+ 
+		&.a {
+			background-color: tomato;
+		}
+
+		&.b {
+			background-color: cornflowerblue;
+		}
+
+		&.c {
+			background-color: aquamarine;
+		}
+
+		&.d {
+			background-color: yellowgreen;
+		}
+
+		&.inactive {
+			background-color: darkgrey !important;
+		}
+
+		&.correct {
+			background-color: #86bc25 !important;
+		}
+
+		&.wrong {
+			background-color: tomato !important;
+		}
+	}
+
+	.kill,
+	.launch {
+		width: 162px;
+		float: right;
+	}
+
+	#challenge-type,
+	#challenge-category {
+		font-size: 20px;
+		letter-spacing: 1px;
+	}
+
+	#challenge-answer input {
+		width: 100%;
+		border: 3px inset;
+		padding: 0.3em;
+	}
+
+	button.small-but {
+		width: auto;
+		padding: 0;
+	}
+}
+
+#countdown-form {
+	color: red !important;
+}
+
+#modal-body {
+	#challenge-answer {
+		th {
+			width: 3%;
+			font-size: 15px;
+			color: yellow;
+		}
+
+		td {
+			width: 20%;
+			color: white;
+			font-size: 0.8vmax;
+		}
+
+		#flag {
+			display: none;
+		}
+	}
+
+	#text-flag {
+		
+		height: 35px; 
+
+		&.wrong {
+			border-color: tomato;
+			color: tomato;
+		}
+
+		&.correct {
+			border-color: #86bc25;
+			color: #86bc25;
+		}
+
+		&.inactive {
+			background-color: grey;
+			color: lightgrey;
+		}
+	}
+
+	#challenge-links {
+		flex-wrap: wrap;
+		display: flex;
+		flex-direction: row;
+		padding-top: 0.3em;
+		padding-bottom: 0.3em;
+
+		a {
+			color: white;
+			text-decoration: none;
+			padding: 0.5em;
+		}
+
+		.link {
+			padding: 0.4em;
+			margin-right: 0.5vw;
+
+			&:hover {
+				text-decoration: underline;
+			}
+		}
+	}
+}
+
+button:hover {
+	text-decoration: underline;
+}
+
+#modal-body {
+	#challenge-links .skeleton-link {
+		display: none;
+	}
+
+	#hint {
+
+		#hint-content {
+			padding-left: 1em;
+		}
+		
+		table {
+			width: 100%;
+			margin-top: 1vh;
+			height: 47px;
+
+			td {
+				font-style: italic;
+				font-size: 14px;
+
+				&:last-child {
+					width: 60px;
+					text-align: center;
+				}
+			}
+		}
+
+		#challenge-hint {
+			color: white;
+			width: 89%;
+			padding: 1%;
+			border-right: none;
+			line-height: 3vh;
+		}
+
+		#get-hint {
+			display: inline-block;
+			float: right;
+			border: 1px solid white;
+			padding: 1%;
+			color: #b35141;
+			line-height: 3vh;
+		}
+
+		span:hover {
+			text-decoration: underline;
+			cursor: pointer;
+		}
+	}
+
+	#submit-answer {
+		text-align: right;
+		padding-right: 0.1em;
+		height: 14%;
+		margin-top: 1vh;
+		display: flex;
+		justify-content: flex-end;
+		align-items: center;
+	}
+}
+
+.launch {
+	margin-right: 1em;
+	background-color: yellowgreen;
+
+	.loading-img {
+		display: none;
+	}
+
+	span {
+		display: block;
+	}
+
+	&.active {
+		background-color: white;
+		padding: 0.1em;
+		justify-content: center;
+		display: flex;
+
+		.loading-img {
+			display: block;
+		}
+
+		img.loading-img {
+			height: 36px;
+		}
+
+		span {
+			display: none;
+		}
+	}
+}
+
+.kill,
+.killall {
+	margin-right: 1em;
+	background-color: tomato;
+
+	.loading-img {
+		display: none;
+	}
+
+	span {
+		display: block;
+	}
+
+	&.active {
+		background-color: white;
+		padding: 0.1em;
+		justify-content: center;
+		display: flex;
+
+		.loading-img {
+			height: 36px;
+			display: block;
+		}
+
+		span {
+			display: none;
+		}
+	}
+}
+
+#discord {
+	position: relative;
+    margin-left: auto;
+    margin-right: auto;
+    z-index: 4;
+}
+
+#modal-footer {
+	display: flex;
+	border: 2px inset;
+	margin-left: 1vw;
+	margin-right: 1vw;
+	padding: 0.5em;
+
+	#points {
+		width: 30%;
+	}
+
+	#completed {
+		padding-left: 1vw;
+		width: 70%;
+		max-height: 100px;
+		overflow: scroll;
+	}
+
+	#teams-completed {
+		font-size: 13px;
+		border-collapse: separate;
+		font-size: 0.8vmax;
+
+		th {
+			font-weight: bold;
+			text-align: left;
+			letter-spacing: 2px;
+		}
+	}
+}
+

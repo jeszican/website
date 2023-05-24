@@ -1,0 +1,15 @@
+{
+        "country_code": "gb",
+        "color": "#B0D601",
+        "name": "Injection 101: SQL",
+        "description": "Login to the web application and retrieve the flag!",
+        "hint": "or '1'='1'",
+        "docker_file": true,
+        "links": "",
+        "flag": "CTF{th1si5fl4g1__!}",
+        "type": "jeopardy",
+        "category": "web",
+        "points": 100,
+        "hint_penalty": 0,
+        "flag_penalty": 0
+}

@@ -1,0 +1,20 @@
+{
+        "country_code":"us-il",
+	"color":"#5C9BD5",
+        "name": "Computer Misuse Act: 👮",
+        "description": "Which offence of the computer misuse act is most applicable: \n\nMy friend left her phone unlocked at the club so I used it to take a couple of cheeky selfies! It's no biggie.",
+        "hint": "Did your friend give you explicit permission?",
+        "links": "",
+	"audio":"cma1.mp3",
+        "flag": "Offence 1",
+        "a":"Offence 1",
+        "b":"Offence 2",
+        "c":"Offence 3a",
+        "d":"Not an offence",
+        "category":"legislation",
+        "type":"multiple",
+        "points": 50,
+        "hint_penalty": 5,
+        "flag_penalty": 15
+}
+

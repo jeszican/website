@@ -1,0 +1,19 @@
+{
+        "country_code":"sr",
+	"color":"#EC7D32",
+        "name": "OWASP Top 10: 🖥️",
+        "description": "What vulnerability in the OWASP Top 10 is all about ensuring your servers are set up correctly and securely?",
+        "hint": "After you set something up you need to configure it!",
+        "links": "[\"https://www.owasp.org/index.php/Top_10_2017-Top_10\"]", 
+        "flag": "Security Misconfiguration",
+        "a":"Sensitive Data Exposure",
+        "b":"Security Misconfiguration",
+        "c":"Missing Function Level Access Control",
+        "d":"SQL Injection",
+        "type":"multiple",
+        "category":"web theory",
+        "depends_on":"",
+        "points": 25,
+        "hint_penalty": 5,
+        "flag_penalty": 5
+}

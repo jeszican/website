@@ -1,0 +1,5 @@
+<select class='form-control' name='{{ field['field_name'] }}'>
+	{% for option in field['data'] %}
+		<option value='{{ option }}'>{{ option|replace('_',' ')|title }}</option>
+	{% endfor %}
+</select>

@@ -1,0 +1,20 @@
+{
+        "country_code":"us-ia",
+	"color":"#5C9BD5",
+        "name": "Computer Misuse Act: 👮",
+        "description": "Which offence of the computer misuse act is most applicable: \n\nMy girlfriend asked me to fix her laptop screen and I found a load of pictures of her with my best friend!",
+        "hint": "Does fixing a laptop screen give you permission to access the users files?",
+        "links": "",
+	"audio":"cma3.mp3",
+        "flag": "Offence 1",
+        "a":"Not an offence",
+        "b":"Offence 1",
+        "c":"Offence 2",
+        "d":"Offence 3",
+        "category":"legislation",
+        "type":"multiple",
+        "points": 50,
+        "hint_penalty": 5,
+        "flag_penalty": 15
+}
+

@@ -1,0 +1,20 @@
+{
+        "country_code":"us-nv",
+	"color":"#5C9BD5",
+        "name": "Computer Misuse Act: 👮",
+        "description": "Which offence of the computer misuse act is most applicable: \n\nI think my girlfriend is cheating on me so I wrote an app so I can track her location secretly.",
+        "hint": "Assume your girlfriend gave you permission to install the app, but she didn't know it tracked her location.",
+        "links": "",
+	"audio":"cma10.mp3",
+        "flag": "Not an offence",
+        "a":"Offence 1",
+        "b":"Not an offence",
+        "c":"Offence 3a",
+        "d":"Offence 3",
+        "category":"legislation",
+        "type":"multiple",
+        "points": 50,
+        "hint_penalty": 5,
+        "flag_penalty": 15
+}
+

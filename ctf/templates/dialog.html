@@ -1,0 +1,16 @@
+<div class="vert-flex" id="dialog">
+<div id="modal-header">
+	<div class="window-bar">
+		{% if "modern" in game_get_gameboard_theme() %}
+			<i class="fas fa-exclamation-triangle mr-2"></i>
+		{% else %}
+			<img src="/static/img/warning.png"></img>
+		{% endif %}
+		<span id="challenge-name">Warning!</span>
+	</div>
+</div>
+<div id="modal-body">
+<p></p>
+<button onclick="closeDialog()">OK</button>
+</div>
+</div>

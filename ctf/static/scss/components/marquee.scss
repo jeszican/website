@@ -1,0 +1,11 @@
+// the marquee
+marquee.announcements {
+	display: inline-block;
+	font-size: 13px;
+	margin-left: 0.5vw;
+	color: white;
+}
+marquee.announcements div {
+	display: inline;
+	margin-right: 2vw;
+}

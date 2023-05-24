@@ -1,0 +1,44 @@
+@use "types/modern.scss";
+@use "types/retro.scss";
+
+@include modern.theme("purple", (
+	"theme-dark": #262130,
+	"theme-darkest": #221d2b,
+	"theme-neutral": rgba(38,33,48,0.95),
+	"theme": #170320,
+	"text": #F5F6F6,
+	"theme-light": #9086a6,
+	"theme-bright": #6D57A3,
+	"very-light":rgba(150, 0, 255, 0.1),
+	"map-color":#261733,
+	"map-outline":mediumpurple,
+	"background-color":lightsteelblue,
+	"complete-color":lightslategrey,
+	"highlight-color":#FF00C1,
+	"accent": yellowgreen,
+	"accent2":mediumslateblue,
+	"accent3":darkorange,
+	"accent4":#f700bb
+));
+
+
+@include retro.theme("purple", (
+	"theme-dark": #170320,
+	"theme-darkest": #221d2b,
+	"theme-neutral": lightgrey,
+	"theme": #170320,
+	"text": #F5F6F6,
+	"theme-light": #9086a6,
+	"theme-bright": darkturquoise,
+	"very-light":rgba(150, 0, 255, 0.1),
+	"map-color":#261733,
+	"map-outline":mediumpurple,
+	"background-color":lightsteelblue,
+	"complete-color":lightslategrey,
+	"highlight-color":#FF00C1,
+	"heading":#F700BB,
+	"accent": darkturquoise,
+	"accent2":mediumslateblue,
+	"accent3":darkorange,
+	"accent4":#f700bb
+));

@@ -1,0 +1,277 @@
+@use "common.scss";
+@use "categories.scss";
+@use "components/clock.scss";
+@use "components/modal.scss";
+@use "themes/_purple.scss";
+@use "themes/_green.scss";
+@use "components/dialog.scss";
+@use "components/marquee.scss";
+@use "components/menu.scss";
+@use "admin.scss";
+@use "landing.scss";
+@use "eventboard.scss";
+
+body {
+	overflow: hidden;
+	display: flex;
+	justify-content: center;
+
+	.background-image {
+		position: absolute;
+		top: 0;
+		left: 0;
+		height: 100%;
+		width: 100%;
+	}
+
+	// the content cotainer
+	.container-fluid.content-container {
+		padding: 0;
+		height: 100vh;
+		width: 100vw;
+		overflow: hidden;
+	}
+
+	// the completed triangles
+	.completed-triangle {
+		width: 0;
+		height: 0;
+		border-left: 5px solid transparent;
+		border-right: 5px solid transparent;
+		border-bottom: 10px solid chartreuse;
+	}
+
+	// the map container
+	.col-sm-12.map-container {
+		padding: 0;
+		height: 100%;
+		display: flex;
+		align-items: center;
+		justify-content: center;
+		flex-direction: column;
+	}
+
+	// all maps
+	.map {
+		padding: 1em;
+	}
+
+	// the us map
+	#usmap {
+		padding: 3em;
+		display: flex;
+		flex-direction: row-reverse;
+	}
+	#usmap button {
+		width: 85px;
+		position: fixed;
+	}
+
+	#challenge-preview {
+		width: 265px;
+		z-index: 2;
+		pointer-events: none;
+
+		.challenge-name {
+			font-size: 15px;
+		}
+
+		td {
+			padding: 5px;
+			text-align: center;
+			width: 10%;
+		}
+
+		#challenge-type,
+		#challenge-category {
+			display: inline-block;
+			letter-spacing: 1px;
+			padding: 4px;
+			font-variant: all-small-caps;
+			padding-left: 10px;
+			padding-right: 10px;
+		}
+
+		#challenge-points {
+			display: inline-block;
+		}
+
+		table {
+			width: 100%;
+		}
+	}
+
+	.heading {
+		letter-spacing: 1px;
+		display: inline-block;
+		font-variant: all-small-caps;
+		font-size: 20px;
+	}
+
+	.blue-text {
+		color: royalblue;
+	}
+	.red-text {
+		color: crimson;
+	}
+	.white-text {
+		color: white;
+	}
+
+	.list-view-tab {
+		position: absolute;
+		z-index: 100;
+		height: 100%;
+		width: 24px;
+		right: 0px;
+		display: flex;
+
+		&.active {
+			width: 40%;
+		}
+	}
+	.list-view-tab span.out-arrow {
+		display: block;
+		margin-top: 5px;
+	}
+	.list-view-tab span.in-arrow {
+		display: none;
+	}
+	.list-view-tab.active span.in-arrow {
+		display: block;
+		margin-top: 5px;
+	}
+	.list-view-tab.active span.out-arrow {
+		display: none;
+	}
+	.list-view-tab span.open-button {
+		cursor: pointer;
+		text-orientation: sideways-right;
+		writing-mode: vertical-lr;
+		display: flex;
+		justify-content: center;
+		font-size: 15px;
+		height: 100%;
+	}
+
+	.challenge-table table {
+		width: 100%;
+
+		tr {
+			cursor: pointer;
+		}
+
+		td {
+			padding: 0.5em;
+		}
+
+		tr:nth-child(2n) td {
+			padding-left: 0.5em;
+			padding-bottom: 0.5em;
+		}
+
+		tr:nth-child(2n + 1) td {
+			padding-left: 0.5em;
+		}
+	}
+
+	div.challenge-table {
+		padding: 1em 1em 1em 0em;
+		width: 100%;
+		overflow-y: scroll;
+	}
+}
+
+.jqvmap-zoomout {
+	width: 25px;
+	height: 25px;
+	margin-top: -50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 200;
+	cursor: pointer;
+}
+
+.jqvmap-zoomin {
+	width: 25px;
+	height: 25px;
+	margin-top: -50px;
+	display: flex;
+	justify-content: center;
+	align-items: center;
+	z-index: 200;
+	cursor: pointer;
+}
+
+
+// path.pulse {
+// 	-webkit-animation: pulsate 5s ease-out;
+// 	-webkit-animation-iteration-count: infinite;
+// 	-moz-animation: pulsate 5s ease-out;
+// 	-moz-animation-iteration-count: infinite;
+// 	-ms-animation: pulsate 5s ease-out;
+// 	-ms-animation-iteration-count: infinite;
+// 	animation: pulsate 5s ease-out;
+// 	animation-iteration-count: infinite;
+// }
+
+// @-webkit-keyframes pulsate {
+// 	0% {
+// 		opacity: 0.4;
+// 		stroke-width: 0.5;
+// 	}
+// 	50% {
+// 		opacity: 1;
+// 		stroke-width: 0.5;
+// 	}
+// 	100% {
+// 		opacity: 0.4;
+// 		stroke-width: 0.5;
+// 	}
+// }
+
+// @-moz-keyframes pulsate {
+// 	0% {
+// 		opacity: 0.4;
+// 		stroke-width: 0.5;
+// 	}
+// 	50% {
+// 		opacity: 1;
+// 		stroke-width: 0.5;
+// 	}
+// 	100% {
+// 		opacity: 0.4;
+// 		stroke-width: 0.5;
+// 	}
+// }
+
+// @-ms-keyframes pulsate {
+// 	0% {
+// 		opacity: 0.4;
+// 		stroke-width: 0.5;
+// 	}
+// 	50% {
+// 		opacity: 1;
+// 		stroke-width: 0.5;
+// 	}
+// 	100% {
+// 		opacity: 0.4;
+// 		stroke-width: 0.5;
+// 	}
+// }
+
+// @keyframes pulsate {
+// 	0% {
+// 		opacity: 0.4;
+// 		stroke-width: 0.5;
+// 	}
+// 	50% {
+// 		opacity: 1;
+// 		stroke-width: 0.5;
+// 	}
+// 	100% {
+// 		opacity: 0.4;
+// 		stroke-width: 0.5;
+// 	}
+// }

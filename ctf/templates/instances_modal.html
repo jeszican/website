@@ -1,0 +1,29 @@
+<div class="modal" id="running-instances">
+<div id="modal-header">
+	<div class="window-bar">
+		{% if "modern" in game_get_gameboard_theme() %}
+				<i class="fas fa-network-wired mr-2"></i>
+		{% else %}
+			<img src="/static/img/computer.png"></img>
+		{% endif %}
+		<span>Your running instances</span>
+		<span class="close-btn" onclick="closeInstances()">
+			{% if "modern" in game_get_gameboard_theme() %}
+			<i class="fas fa-times"></i>
+			{% else %}
+			&Cross;
+			{% endif %}
+		</span>
+	</div>
+
+</div>
+<div id="modal-body">
+<table id="instances">
+	<!--  a row for a user -->
+	<tbody id="chals"></tbody>
+</table>
+<button type="button" class="kill-all" onclick="killAllChallenges()" style="background-color:orange;margin-top:1em;">
+	<span>Kill all challenges</span>
+</button>
+</div>
+</div>
